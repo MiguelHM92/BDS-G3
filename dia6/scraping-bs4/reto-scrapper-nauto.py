@@ -20,11 +20,13 @@ if response.status_code == 200:
         nombre = carro.find('h2', class_='c-results__header-title').get_text()
         r_carro = carro.find('a')['href']
         url = "https://neoauto.com/" + r_carro
+        precio_carro = carro.find('div', class_='c-results-mount__price').get_text()
         
         print(f'Nombre: {nombre}')
         print(f'URL: {url}')
+        print(f'Precio: {precio_carro}')
         print('---')
-        carros.append({"nombre": nombre, "url": url})
+        carros.append({"nombre": nombre, "url": url, "Precio": precio_carro})
 else:
     print(f'Error {response.status_code} {response.reason}')
 
